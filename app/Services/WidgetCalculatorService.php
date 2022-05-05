@@ -12,20 +12,15 @@ class WidgetCalculatorService {
 	public $totalPacks;
 	public $packArray;
 
-	// defining them as constants, in a realworld application i would usually use a model then inject into this into the service constructor.
-	const PACK_SIZES = [
-		5000, 
-		2000,
-		1000,
-		500,
-		250
-	];
+	public function __construct() {
 
+		// load packs from .env
+		$this->packArray = explode(',', config('app.widget_pack_sizes'));
+		
+	}
 
 	public function calculate(int $requiredWidgets) : array {
 
-		// define the pack sizes
-		$this->packArray  = self::PACK_SIZES;
 
 		// define the total packs ( use out outside of forloop, slight performance increase )
 		$this->totalPacks = count($this->packArray);

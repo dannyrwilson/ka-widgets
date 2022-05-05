@@ -29,7 +29,7 @@ class CalculatorController extends Controller
 		return view('calculator.result', [
 			'packs' => $packs,
 			'requiredWidgets' => number_format($requiredWidgets, 0)
-		]);
+		])->render();
 		
 	}
 }
